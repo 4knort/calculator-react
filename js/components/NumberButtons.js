@@ -1,16 +1,16 @@
 import React from 'react';
 
-const NumberButtons = ({}) => {
-  const buttons = [];
+const NumberButtons = ({ onClick }) => {
 
-  for(var i = 0; i<10; i++) {
-    var x = <button key={i} className="button-number">{i}</button>;
-    buttons.push(x);
-  }
+  const buttons = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9' ];
+  const buttonObjects = buttons.map( (item, i) => <button onClick= {() => onNumberClick(i)} key={i} className="button-number">{item}</button>) 
+
+  const onNumberClick = (number) => onClick(number)
+
 
   return (
     <div className="buttons-container">
-      {buttons}
+      {buttonObjects}
     </div>
   )
 }

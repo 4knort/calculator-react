@@ -1,10 +1,9 @@
 import React from 'react';
 
-const InputField = ({  }) => {
-
+const InputField = ({ value }) => {
   return (
     <div className="input-field">
-
+      {value}
     </div>
   )
 }

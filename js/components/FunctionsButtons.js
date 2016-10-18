@@ -2,7 +2,7 @@ import React from 'react';
 
 const FunctionsButtons = ({}) => {
   const buttons = ['+', '-', '*', '/', 'Clear', '←', '='];
-  var buttonObjects = buttons.map((item) => <button className="button-number">{item}</button>) 
+  const buttonObjects = buttons.map((item, i) => <button key={i} className="button-number">{item}</button>) 
 
   return (
     <div >
