@@ -8,7 +8,6 @@ export default class App extends Component {
     super(props);
     this.state = {
       value: 0,
-      secondValue: '',
       operation: '',
       operationStart: false
     };
@@ -29,7 +28,7 @@ export default class App extends Component {
   render() {
     return (
       <div className="container app calc">
-        <InputField value={this.state.value.toString() + this.state.operation + this.state.secondValue}/>
+        <InputField value={this.state.value.toString() + this.state.operation}/>
         <NumberButtons onClick={this.onNumberClick.bind(this)}/>
         <FunctionsButtons />
       </div>
