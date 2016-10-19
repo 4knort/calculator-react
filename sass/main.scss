@@ -42,5 +42,8 @@
   .button-number {
     padding: 20px;
     margin: 10px;
+    &.button-zero {
+      width: 82%;
+    }
   }
 }

@@ -7,30 +7,61 @@ export default class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      value: 0,
-      operation: '',
-      operationStart: false
+      value: "",
+      operation: false
     };
   }
 
-  onNumberClick(number) {
-    if (!this.state.operationStart) {
-      this.setState ({
-        value: parseInt(this.state.value.toString() + number, 10)
-      })
-    } else {
-      this.setState ({
-        secondValue: parseInt(this.state.value.toString() + number, 10)
-      })
+  onNumberClick(symbol) {
+      if(!this.state.operation && typeof parseInt(symbol, 10) === "number") {
+        this.setState ({
+        value: this.state.value.toString() + symbol,
+        operation: false
+        })
+      } else if (typeof parseInt(symbol, 10) !== "Number") {
+        if(this.state.operation) {
+          return
+        }
+
+        this.setState ({
+          value: this.state.value.toString() + symbol,
+          operation: true
+        })
+      }
+
     }
-    
+
+  onFunctionClick(operation) {
+    switch(operation) {
+
+      case "clear": {
+        this.setState({
+          value: ""
+        })
+        break;
+      }
+
+      case "delete": {
+        this.setState({
+          value: this.state.value.slice(0, this.state.value.length - 1)
+        })
+        break;
+      }
+
+      case "equal": {
+        this.setState({
+          value: eval(this.state.value).toString()
+        })
+        break;
+      }
+    }
   }
   render() {
     return (
       <div className="container app calc">
-        <InputField value={this.state.value.toString() + this.state.operation}/>
-        <NumberButtons onClick={this.onNumberClick.bind(this)}/>
-        <FunctionsButtons />
+        <InputField value={this.state.value} />
+        <NumberButtons onClick={this.onNumberClick.bind(this)} />
+        <FunctionsButtons onClick={this.onNumberClick.bind(this)} buttonFunction={this.onFunctionClick.bind(this)}/>
       </div>
     );
   }
