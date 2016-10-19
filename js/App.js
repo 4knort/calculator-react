@@ -19,7 +19,7 @@ export default class App extends Component {
         value: this.state.value.toString() + symbol,
         operation: false
         })
-      } else if (typeof symbol !== "Number") {
+      } else {
         if(this.state.operation) {
           return
         }
