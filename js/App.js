@@ -13,12 +13,13 @@ export default class App extends Component {
   }
 
   onNumberClick(symbol) {
-      if(!this.state.operation && typeof parseInt(symbol, 10) === "number") {
+      if(typeof symbol === "number") {
+
         this.setState ({
         value: this.state.value.toString() + symbol,
         operation: false
         })
-      } else if (typeof parseInt(symbol, 10) !== "Number") {
+      } else if (typeof symbol !== "Number") {
         if(this.state.operation) {
           return
         }
