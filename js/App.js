@@ -50,9 +50,16 @@ export default class App extends Component {
       }
 
       case "equal": {
-        this.setState({
-          value: eval(this.state.value).toString()
-        })
+        if(eval(this.state.value).toString() === "Infinity") {
+          alert("division by zero in undefined")
+          this.setState({
+            value: ""
+          })
+        } else {
+          this.setState({
+            value: eval(this.state.value).toString()
+          })
+        }
         break;
       }
     }
