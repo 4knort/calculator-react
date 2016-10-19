@@ -24,24 +24,24 @@
   color: #ccc;
 }
 .calc {
-  background: green;
+  background: #222;
   width: 320px;
   margin: 0 auto;
   height: 500px;
   padding: 0;
   .input-field {
-    background: red;
+    background: #dedede;
     height: 50px;
     text-align: right;
   }
   .buttons-container {
-    background-color: blue;
     width: 240px;
     float: left;
   }
   .button-number {
     padding: 20px;
     margin: 10px;
+    color: black;
     &.button-zero {
       width: 82%;
     }
