@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import InputField from './components/InputField';
 import NumberButtons from './components/NumberButtons';
 import FunctionsButtons from './components/FunctionsButtons';
-import * as functions from './helperFunctions.js'
+import {onNumberClick, onFunctionClick} from './helperFunctions.js'
 
 export default class App extends Component {
   constructor(props) {
@@ -13,64 +13,12 @@ export default class App extends Component {
     };
   }
 
-  onNumberClick(symbol) {
-      if(typeof symbol === "number") {
-
-        this.setState ({
-        value: this.state.value.toString() + symbol,
-        operation: false
-        })
-      } else {
-        if(this.state.operation) {
-          return
-        }
-
-        this.setState ({
-          value: this.state.value.toString() + symbol,
-          operation: true
-        })
-      }
-
-    }
-
-  onFunctionClick(operation) {
-    switch(operation) {
-
-      case "clear": {
-        this.setState({
-          value: ""
-        })
-        break;
-      }
-
-      case "delete": {
-        this.setState({
-          value: this.state.value.slice(0, this.state.value.length - 1)
-        })
-        break;
-      }
-
-      case "equal": {
-        if(eval(this.state.value).toString() === "Infinity") {
-          alert("division by zero in undefined")
-          this.setState({
-            value: ""
-          })
-        } else {
-          this.setState({
-            value: eval(this.state.value).toString()
-          })
-        }
-        break;
-      }
-    }
-  }
   render() {
     return (
       <div className="container app calc">
         <InputField value={this.state.value} />
-        <NumberButtons onClick={this.onNumberClick.bind(this)} />
-        <FunctionsButtons onClick={this.onNumberClick.bind(this)} buttonFunction={this.onFunctionClick.bind(this)}/>
+        <NumberButtons onClick={onNumberClick.bind(this)} />
+        <FunctionsButtons onClick={onNumberClick.bind(this)} buttonFunction={onFunctionClick.bind(this)}/>
       </div>
     );
   }
