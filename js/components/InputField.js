@@ -1,10 +1,9 @@
 import React from 'react';
 
-const InputField = ({ value }) => {
+const InputField = ({ value, onChange }) => {
   return (
-    <div className="input-field">
-      {value}
-    </div>
+    <input autoFocus={true} value={value} onKeyPress={onChange} className="input-field" />
+
   )
 }
 

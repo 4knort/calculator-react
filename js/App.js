@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import InputField from './components/InputField';
 import NumberButtons from './components/NumberButtons';
 import FunctionsButtons from './components/FunctionsButtons';
-import {onNumberClick, onFunctionClick} from './helperFunctions.js'
+import {onNumberClick, onFunctionClick, onInputChange} from './helperFunctions.js'
 
 export default class App extends Component {
   constructor(props) {
@@ -16,7 +16,7 @@ export default class App extends Component {
   render() {
     return (
       <div className="container app calc">
-        <InputField value={this.state.value} />
+        <InputField value={this.state.value} onChange={onInputChange.bind(this)}/>
         <NumberButtons onClick={onNumberClick.bind(this)} />
         <FunctionsButtons onClick={onNumberClick.bind(this)} buttonFunction={onFunctionClick.bind(this)}/>
       </div>
