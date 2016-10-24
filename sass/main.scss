@@ -1,3 +1,38 @@
+$color-white: #FFF;
+$color-white-gray: #F5F5F5;
+$color-light-gray: #D7D7D7;
+$color-gray: #AAA;
+$color-dark-gray: #444;
+$color-black: #222;
+$color-true-black: #000;
+
+$color-green: #4CAF50;
+$color-dark-green: #43A047;
+
+$color-red: #EB4010;
+$color-dark-red: #C8310C;
+
+$color-blue: #119CE5;
+$color-dark-blue: #138DCE;
+
+$light-border: .1rem solid $color-light-gray;
+
+$font-face-base: 'source-sans-pro', Helvetica, Arial, sans-serif;
+$font-family-mono: 'inconsolata', 'Lucida Console', Monaco, monospace;
+
+$box-shadow: .1rem .2rem .5rem rgba(0, 0, 0, .1), -.1rem -.2rem .5rem rgba(0, 0, 0, .1);
+
+@mixin center($width) {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: $width;
+}
+
+@mixin color-switch($prop) {
+  &--light { #{$prop}: $color-white; }
+  &--dark { #{$prop}: $color-true-black; }
+}
+
 .rc-intro {
   background-color: #222;
   padding: 2rem;
@@ -24,26 +59,67 @@
   color: #ccc;
 }
 .calc {
-  background: #222;
-  width: 320px;
-  margin: 0 auto;
-  height: 500px;
-  padding: 0;
-  .input-field {
-    background: #dedede;
-    height: 50px;
-    text-align: right;
-  }
-  .buttons-container {
-    width: 240px;
-    float: left;
-  }
-  .button-number {
-    padding: 20px;
-    margin: 10px;
-    color: black;
-    &.button-zero {
-      width: 82%;
-    }
+  @include center(50rem);
+  margin-top: 10rem;
+  padding: 2rem;
+  border: .1rem solid $color-white-gray;
+  border-radius: .3rem;
+  box-shadow: $box-shadow;
+  background-color: $color-white-gray;
+}
+
+.calc__input {
+  width: 100%;
+  border: .1rem solid transparent;
+  margin-bottom: 2rem;
+  padding: .5rem 1rem;
+  font-size: 2.2rem;
+  font-family: $font-family-mono;
+  text-align: right;
+  &:focus {
+    border-color: $color-blue;
+    outline: 0;
   }
 }
+
+.calc__buttons {
+  display: flex;
+}
+
+.calc__numbers, .calc__chars {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.calc__result {
+  margin-bottom: 2rem;
+  text-transform: uppercase;
+  font-weight: bold;
+  background-color: $color-white;
+  padding: 2rem;
+}
+
+.calc__chars {
+  margin-left: 4rem;
+  .calc__button {
+    flex: 1 50%;
+  }
+}
+
+.calc__button {
+  border: .1rem solid $color-white-gray;
+  background-color: $color-white;
+  flex: 1 33%;
+  font-size: 2rem;
+  padding: 2rem;
+  transition: background-color 200ms ease;
+
+  &:active {
+    background-color: $color-white-gray;
+  }
+
+  &:focus {
+    outline: 0;
+  }
+}
+
